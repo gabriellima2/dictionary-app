@@ -1,0 +1,9 @@
+node_modules
+
+.expo-shared
+
+/*.js
+
+.expo/
+
+dist/
