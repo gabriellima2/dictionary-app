@@ -9,11 +9,11 @@ export const SearchBar = ({ onSearch }: SearchBarProp) => {
 	const [value, setValue] = useState("");
 
 	const handleSubmit = () => {
-		const valueFormatted = value.trim();
+		const formattedValue = value.trim();
 
-		if (!valueFormatted) return;
+		if (!formattedValue) return;
 
-		onSearch(valueFormatted);
+		onSearch(formattedValue);
 	};
 
 	return (
