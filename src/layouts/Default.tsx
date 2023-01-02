@@ -5,6 +5,8 @@ import {
 	StyleSheet,
 	View,
 } from "react-native";
+
+import { themes } from "../styles/theme";
 import type { Children } from "../@types/Children";
 
 const { StatusBarManager } = NativeModules;
@@ -21,10 +23,12 @@ const styles = StyleSheet.create({
 	safeArea: {
 		flex: 1,
 		paddingHorizontal: 8,
+		backgroundColor: themes.backgroundColor,
 	},
 	container: {
 		flex: 1,
 		paddingTop: STATUSBAR_HEIGHT,
 		paddingHorizontal: 8,
+		backgroundColor: themes.backgroundColor,
 	},
 });
