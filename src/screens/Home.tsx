@@ -1,10 +1,18 @@
-import { Text } from "react-native";
+import { useNavigation } from "../hooks/useNavigation";
+
+import { SearchBar } from "../components/SearchBar";
 import { Default } from "../layouts/Default";
 
 export const Home = () => {
+	const { navigate } = useNavigation();
+
+	const handleSearch = (word: string) => {
+		navigate("Result", { word: word.toLowerCase() });
+	};
+
 	return (
 		<Default>
-			<Text>Home Screen</Text>
+			<SearchBar onSearch={handleSearch} />
 		</Default>
 	);
 };
