@@ -4,10 +4,10 @@ import { capitalizeFirstLetter } from "../../../utils/capitalizeFirstLetter";
 import { styles } from "../styles";
 
 interface ParagraphProps extends TextProps {
-	weight?: "bold" | "regular" | "light";
+	weight?: "medium" | "regular" | "light";
 }
 
-export const Paragraph = ({ weight = "bold", ...props }: ParagraphProps) => (
+export const Paragraph = ({ weight = "medium", ...props }: ParagraphProps) => (
 	<Text
 		{...props}
 		style={[
