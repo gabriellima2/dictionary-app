@@ -36,7 +36,7 @@
             "error",
             "always"
         ],
-        "indent": ["error", "tab"],
+				"indent": "off",
         "prettier/prettier": [2, { "useTabs": true }],
         "react/prop-types": "off",
         "react/react-in-jsx-scope": "off",
