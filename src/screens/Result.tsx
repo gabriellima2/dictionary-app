@@ -24,7 +24,7 @@ export const Result = (props: ResultProps) => {
 			return data.phonetics.find((phonetic) => phonetic.audio).audio;
 	};
 
-	if (isError)
+	if (isError || !data)
 		return (
 			<Default>
 				<Error message={error as string} />

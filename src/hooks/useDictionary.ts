@@ -6,7 +6,7 @@ import type { Dictionary } from "../interfaces/Dictionary";
 interface Return {
 	data: Dictionary | null;
 	isError: boolean;
-	error: unknown;
+	error: string | undefined;
 	isLoading: boolean;
 	isFetched: boolean;
 }
@@ -20,7 +20,7 @@ export function useDictionary(word: string): Return {
 	return {
 		data: data ? data[0] : null,
 		isError,
-		error,
+		error: !error && !data ? "Word not found" : (error as string),
 		isFetched,
 		isLoading,
 	};
