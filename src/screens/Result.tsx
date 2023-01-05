@@ -19,7 +19,7 @@ export const Result = (props: ResultProps) => {
 	const { word } = props.route.params;
 	const { data, error, isError, isLoading } = useDictionary(word);
 
-	if (isError || !data)
+	if (isError)
 		return (
 			<Default>
 				<Error message={error as string} />

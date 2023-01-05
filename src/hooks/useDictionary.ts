@@ -26,7 +26,7 @@ export function useDictionary(word: string): Return {
 	return {
 		data: data ? data[0] : null,
 		isError,
-		error: !error && !data ? "Word not found" : (error as string),
+		error: (error as Error)?.message,
 		isFetched,
 		isLoading,
 	};

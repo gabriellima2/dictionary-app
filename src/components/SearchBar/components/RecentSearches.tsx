@@ -21,7 +21,7 @@ export const RecentSearches = (props: RecentSearchesProps) => {
 
 	return (
 		<View style={styles.container}>
-			<Title style={styles.title}>Últimas pesquisas</Title>
+			<Title style={styles.title}>Latest searches</Title>
 			<FlatList<string>
 				data={props.recentSearches}
 				renderItem={renderItem}

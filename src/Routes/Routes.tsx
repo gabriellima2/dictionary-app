@@ -15,9 +15,13 @@ export const Routes = () => (
 			<Stack.Screen
 				name="Home"
 				component={Home}
-				options={{ title: "Significado das palavras" }}
+				options={{ title: "Dictionary" }}
 			/>
-			<Stack.Screen name="Result" component={Result} />
+			<Stack.Screen
+				name="Result"
+				component={Result}
+				options={{ title: "Definition" }}
+			/>
 		</Stack.Navigator>
 	</NavigationContainer>
 );

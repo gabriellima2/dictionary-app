@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { View } from "react-native";
 
 import { useRecentSearches } from "./hooks/useRecentSearches";
@@ -20,6 +20,7 @@ export const SearchBar = ({ onSearch }: SearchBarProp) => {
 
 		if (!formattedValue) return;
 
+		setValue("");
 		onSearch(formattedValue);
 		saveWordSearched(formattedValue);
 	};
@@ -31,11 +32,12 @@ export const SearchBar = ({ onSearch }: SearchBarProp) => {
 				onChangeText={setValue}
 				onSubmitEditing={handleSubmit}
 				leftIcon={{ name: "md-search-outline" }}
-				placeholder="Digite a palavra..."
+				placeholder="Type something..."
 				returnKeyType="search"
-				accessibilityLabel="Campo de busca"
-				accessibilityHint="Mostrará uma tela com o resultado"
+				accessibilityLabel="Search Field"
+				accessibilityHint="Will show a screen with the word definition"
 				autoCapitalize="none"
+				autoFocus
 			/>
 			{recentSearches && (
 				<RecentSearches

@@ -3,6 +3,6 @@ import { Center } from "./Center";
 
 export const Loading = () => (
 	<Center>
-		<Text>Carregando...</Text>
+		<Text>Loading...</Text>
 	</Center>
 );

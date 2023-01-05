@@ -1,23 +1,18 @@
 import { API_URL } from "../constants/API_URL";
 import type { Dictionary } from "../interfaces/Dictionary";
 
-interface Error {
+interface IError {
 	title: string;
 	message: string;
 }
 
 export const dictionaryServices = {
 	get: async (word: string) => {
-		try {
-			const response = await fetch(`${API_URL}/${word.toLowerCase().trim()}`);
-			if (!response.ok) throw new Error("Network response was not ok");
+		const response = await fetch(`${API_URL}/${word.toLowerCase().trim()}`);
+		const data: Dictionary[] | IError = await response.json();
 
-			const data: Dictionary[] | Error = await response.json();
-			if (!Array.isArray(data)) throw new Error(data.title);
-
-			return data;
-		} catch (err) {
-			return null;
-		}
+		if (!response.ok && !Array.isArray(data)) throw new Error(data.title);
+		if (!response.ok) throw new Error("Network response was not ok");
+		return data as Dictionary[];
 	},
 };
