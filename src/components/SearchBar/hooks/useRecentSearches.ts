@@ -49,12 +49,12 @@ export function useRecentSearches(): Return {
 	};
 
 	useEffect(() => {
-		(async () => await saveRecentSearchesOnStorage())();
-	}, [recentSearches]);
-
-	useEffect(() => {
 		(async () => await getRecentSearchesFromStorage())();
 	}, []);
+
+	useEffect(() => {
+		(async () => await saveRecentSearchesOnStorage())();
+	}, [recentSearches]);
 
 	return {
 		recentSearches,
