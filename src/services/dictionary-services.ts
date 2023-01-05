@@ -10,9 +10,11 @@ export const dictionaryServices = {
 	get: async (word: string) => {
 		try {
 			const response = await fetch(`${API_URL}/${word.toLowerCase().trim()}`);
-			const data: Dictionary[] | Error = await response.json();
+			if (!response.ok) throw new Error("Network response was not ok");
 
+			const data: Dictionary[] | Error = await response.json();
 			if (!Array.isArray(data)) throw new Error(data.title);
+
 			return data;
 		} catch (err) {
 			return null;

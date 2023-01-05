@@ -19,11 +19,6 @@ export const Result = (props: ResultProps) => {
 	const { word } = props.route.params;
 	const { data, error, isError, isLoading } = useDictionary(word);
 
-	const getAudio = () => {
-		if (data && data.phonetics)
-			return data.phonetics.find((phonetic) => phonetic.audio).audio;
-	};
-
 	if (isError || !data)
 		return (
 			<Default>
@@ -37,6 +32,11 @@ export const Result = (props: ResultProps) => {
 				<Loading />
 			</Default>
 		);
+
+	const getAudio = () => {
+		if (data && data.phonetics)
+			return data.phonetics.find((phonetic) => phonetic.audio)?.audio;
+	};
 
 	return (
 		<Default>

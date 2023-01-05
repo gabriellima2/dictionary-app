@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useQuery } from "react-query";
 
 import { dictionaryServices } from "../services/dictionary-services";
@@ -12,10 +13,15 @@ interface Return {
 }
 
 export function useDictionary(word: string): Return {
-	const { data, isError, error, isLoading, isFetched } = useQuery<Dictionary[]>(
-		"dictionary",
-		() => dictionaryServices.get(word)
-	);
+	const { data, isError, error, isLoading, isFetched, refetch } = useQuery<
+		Dictionary[]
+	>("dictionary", () => dictionaryServices.get(word), {
+		refetchOnWindowFocus: false,
+	});
+
+	useEffect(() => {
+		(async () => await refetch())();
+	}, [word]);
 
 	return {
 		data: data ? data[0] : null,
