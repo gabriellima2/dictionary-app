@@ -3,7 +3,7 @@ import { Text, TextProps } from "react-native";
 import { capitalizeFirstLetter } from "../../../utils/capitalizeFirstLetter";
 import { styles } from "../styles";
 
-interface TitleProps extends TextProps {
+export interface TitleProps extends TextProps {
 	weight?: "bold" | "regular";
 }
 

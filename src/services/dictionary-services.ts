@@ -5,7 +5,7 @@ export const dictionaryServices = {
 	get: async (word: string) => {
 		try {
 			const response = await fetch(`${API_URL}/${word.toLowerCase().trim()}`);
-			const data: Dictionary = await response.json();
+			const data: Dictionary[] = await response.json();
 			return data;
 		} catch (err) {
 			return null;

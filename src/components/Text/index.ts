@@ -1,2 +1,2 @@
-export { Paragraph } from "./components/Paragraph";
-export { Title } from "./components/Title";
+export { Paragraph, ParagraphProps } from "./components/Paragraph";
+export { Title, TitleProps } from "./components/Title";

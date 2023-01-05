@@ -1,17 +1,11 @@
-interface Phonetic {
-	text: string;
-	audio?: string;
-}
+import type { Meaning } from "./Meaning";
 
-interface Meaning {
-	example: string;
-	synonyms: string[] | [];
-	antonyms: string[] | [];
+interface Phonetic {
+	audio?: string;
 }
 
 export interface Dictionary {
 	word: string;
-	phonetic: string;
 	phonetics: Phonetic[];
 	meanings: Meaning[];
 }

@@ -1,3 +1,8 @@
 import { Text } from "react-native";
+import { Center } from "./Center";
 
-export const Loading = () => <Text>Carregando...</Text>;
+export const Loading = () => (
+	<Center>
+		<Text>Carregando...</Text>
+	</Center>
+);

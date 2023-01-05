@@ -3,7 +3,7 @@ import { Text, TextProps } from "react-native";
 import { capitalizeFirstLetter } from "../../../utils/capitalizeFirstLetter";
 import { styles } from "../styles";
 
-interface ParagraphProps extends TextProps {
+export interface ParagraphProps extends TextProps {
 	weight?: "medium" | "regular" | "light";
 }
 

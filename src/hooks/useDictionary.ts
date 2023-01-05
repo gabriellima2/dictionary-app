@@ -12,13 +12,13 @@ interface Return {
 }
 
 export function useDictionary(word: string): Return {
-	const { data, isError, error, isLoading, isFetched } = useQuery<Dictionary>(
+	const { data, isError, error, isLoading, isFetched } = useQuery<Dictionary[]>(
 		"dictionary",
 		() => dictionaryServices.get(word)
 	);
 
 	return {
-		data,
+		data: data ? data[0] : null,
 		isError,
 		error,
 		isFetched,
