@@ -7,5 +7,6 @@ export const styles: StackNavigationOptions = {
 		color: themes.fontColor,
 		fontSize: 18,
 	},
+	headerTintColor: themes.fontColor,
 	headerStyle: { backgroundColor: themes.backgroundColor },
 };
