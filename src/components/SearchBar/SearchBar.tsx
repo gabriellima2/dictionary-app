@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { View } from "react-native";
 
 import { useRecentSearches } from "./hooks/useRecentSearches";
 
 import { RecentSearches } from "./components";
-import { Input } from "../Input";
+import { BaseInput } from "../BaseInput";
 
 interface SearchBarProp {
 	onSearch: (value: string) => void;
@@ -27,7 +27,7 @@ export const SearchBar = ({ onSearch }: SearchBarProp) => {
 
 	return (
 		<View>
-			<Input
+			<BaseInput
 				value={value}
 				onChangeText={setValue}
 				onSubmitEditing={handleSubmit}

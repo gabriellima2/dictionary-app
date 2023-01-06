@@ -1,9 +1,9 @@
 import { StyleSheet, TextInput, TextInputProps, View } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
-import { themes } from "../styles/theme";
+import { themes } from "../../styles/theme";
 
-interface InputProps extends TextInputProps {
+interface BaseInputProps extends TextInputProps {
 	leftIcon?: {
 		name: keyof typeof Ionicons.glyphMap;
 		size?: number;
@@ -11,7 +11,7 @@ interface InputProps extends TextInputProps {
 	};
 }
 
-export const Input = ({ leftIcon, ...props }: InputProps) => (
+export const BaseInput = ({ leftIcon, ...props }: BaseInputProps) => (
 	<View style={styles.container}>
 		{leftIcon && (
 			<Ionicons
