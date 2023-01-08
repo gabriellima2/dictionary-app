@@ -10,6 +10,12 @@ const mockUseRecentSearches = useRecentSearches as jest.MockedFunction<
 	typeof useRecentSearches
 >;
 
+const useRecentSearchesDefaultReturnValue = {
+	recentSearches: null,
+	removeWordSearched: jest.fn(),
+	saveWordSearched: jest.fn(),
+};
+
 function onSubmitEditing(input: ReactTestInstance, value: string) {
 	fireEvent.changeText(input, value);
 	fireEvent(input, "onSubmitEditing", {
@@ -25,32 +31,33 @@ describe("Search Bar Component", () => {
 	const mockOnSearch = jest.fn();
 	const mockSaveWordSearched = jest.fn();
 
+	afterEach(() => jest.resetAllMocks());
 	beforeEach(() => {
+		mockUseRecentSearches.mockImplementation(() => ({
+			...useRecentSearchesDefaultReturnValue,
+		}));
 		render(<SearchBar onSearch={mockOnSearch} />);
 	});
 
 	describe("Render", () => {
-		mockUseRecentSearches.mockReturnValue({
-			recentSearches: null,
-			removeWordSearched: jest.fn(),
-			saveWordSearched: jest.fn,
-		});
-
-		it("should render correctly if 'recent searches' is empty", () => {
+		it("should render correctly", () => {
 			expect(getInputElement()).toBeTruthy();
-			expect(screen.getByText("Hello")).toBeTruthy();
+			expect(screen.queryByText("Hello")).not.toBeTruthy();
 		});
 	});
 
 	describe("Interactions", () => {
-		mockUseRecentSearches.mockReturnValue({
-			recentSearches: ["Hello"],
-			removeWordSearched: jest.fn(),
-			saveWordSearched: mockSaveWordSearched,
-		});
-
 		describe("Search", () => {
+			function executeMockImplementation() {
+				mockUseRecentSearches.mockImplementation(() => ({
+					...useRecentSearchesDefaultReturnValue,
+					saveWordSearched: mockSaveWordSearched,
+				}));
+			}
+
 			it("should not search if the value is empty", () => {
+				executeMockImplementation();
+
 				const input = getInputElement();
 				onSubmitEditing(input, "");
 
@@ -59,6 +66,8 @@ describe("Search Bar Component", () => {
 			});
 
 			it("should search if the value is filled", () => {
+				executeMockImplementation();
+
 				const typedValue = "Hello";
 				const input = getInputElement();
 				onSubmitEditing(input, typedValue);
