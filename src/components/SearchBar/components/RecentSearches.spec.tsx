@@ -5,13 +5,13 @@ const FIRST_TEXT_MOCK = "Hello";
 const SECOND_TEXT_MOCK = "World";
 
 describe("Recent Searches Component", () => {
-	const removeFromRecentSearchesMock = jest.fn();
+	const mockRemoveFromRecentSearches = jest.fn();
 
 	beforeAll(() =>
 		render(
 			<RecentSearches
 				recentSearches={[FIRST_TEXT_MOCK, SECOND_TEXT_MOCK]}
-				removeFromRecentSearches={removeFromRecentSearchesMock}
+				removeFromRecentSearches={mockRemoveFromRecentSearches}
 			/>
 		)
 	);
@@ -30,7 +30,7 @@ describe("Recent Searches Component", () => {
 				const removeButton = screen.getAllByLabelText("Remove");
 				fireEvent.press(removeButton[0]);
 
-				expect(removeFromRecentSearchesMock).toHaveBeenCalled();
+				expect(mockRemoveFromRecentSearches).toHaveBeenCalled();
 			});
 		});
 	});

@@ -12,6 +12,7 @@ function getButtonElement() {
 describe("Audio Button Component", () => {
 	const mockPlaySound = jest.fn();
 
+	afterEach(() => jest.resetAllMocks());
 	beforeEach(() => {
 		(usePlaySound as jest.Mock).mockImplementation(() => ({
 			...jest.requireActual("../../../hooks/usePlaySound"),

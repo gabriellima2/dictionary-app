@@ -22,14 +22,14 @@ describe("Base Input Component", () => {
 
 	describe("Interactions", () => {
 		describe("should get the typed value", () => {
-			const handleChangeText = jest.fn();
-			beforeEach(() => renderBaseInput({ onChangeText: handleChangeText }));
+			const mockOnChangeText = jest.fn();
+			beforeEach(() => renderBaseInput({ onChangeText: mockOnChangeText }));
 
 			it("should show the typed value", () => {
 				const TYPED_VALUE = "Olá, Teste!";
 				fireEvent.changeText(getBaseInput(), TYPED_VALUE);
 
-				expect(handleChangeText).toHaveBeenCalledWith(TYPED_VALUE);
+				expect(mockOnChangeText).toHaveBeenCalledWith(TYPED_VALUE);
 			});
 		});
 	});

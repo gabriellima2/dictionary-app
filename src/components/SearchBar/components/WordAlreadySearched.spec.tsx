@@ -4,13 +4,13 @@ import { WordAlreadySearched } from "./WordAlreadySearched";
 
 describe("Word Already Searched Component", () => {
 	const wordMock = "Teste Unitário";
-	const handleRemoveMock = jest.fn();
+	const mockHandleRemove = jest.fn();
 
 	beforeAll(() =>
 		render(
 			<WordAlreadySearched
 				word={wordMock}
-				removeFromRecentSearches={handleRemoveMock}
+				removeFromRecentSearches={mockHandleRemove}
 			/>
 		)
 	);
@@ -37,7 +37,7 @@ describe("Word Already Searched Component", () => {
 					const removeButton = screen.getByLabelText("Remove");
 					fireEvent.press(removeButton);
 
-					expect(handleRemoveMock).toHaveBeenCalled();
+					expect(mockHandleRemove).toHaveBeenCalled();
 				});
 			});
 		});
