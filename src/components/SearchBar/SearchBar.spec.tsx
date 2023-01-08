@@ -6,11 +6,9 @@ import { SearchBar } from "./SearchBar";
 
 jest.mock("./hooks/useRecentSearches");
 
-const mockUseRecentSearches = useRecentSearches as jest.MockedFunction<
+const mockUseRecentSearchesDefaultReturnValue: ReturnType<
 	typeof useRecentSearches
->;
-
-const useRecentSearchesDefaultReturnValue = {
+> = {
 	recentSearches: null,
 	removeWordSearched: jest.fn(),
 	saveWordSearched: jest.fn(),
@@ -28,36 +26,46 @@ function getInputElement() {
 }
 
 describe("Search Bar Component", () => {
-	const mockOnSearch = jest.fn();
 	const mockSaveWordSearched = jest.fn();
+	const mockRecentSearches = ["Hello"];
+	const mockOnSearch = jest.fn();
 
-	afterEach(() => jest.resetAllMocks());
-	beforeEach(() => {
-		mockUseRecentSearches.mockImplementation(() => ({
-			...useRecentSearchesDefaultReturnValue,
+	function renderSearchBarWithMockedHooks(
+		mockReturnValue = mockUseRecentSearchesDefaultReturnValue
+	) {
+		(useRecentSearches as jest.Mock).mockImplementation(() => ({
+			...mockReturnValue,
 		}));
 		render(<SearchBar onSearch={mockOnSearch} />);
-	});
+	}
+
+	afterEach(() => jest.resetAllMocks());
 
 	describe("Render", () => {
-		it("should render correctly", () => {
+		it("should render correctly if 'recent searches' is empty", () => {
+			renderSearchBarWithMockedHooks();
+
 			expect(getInputElement()).toBeTruthy();
-			expect(screen.queryByText("Hello")).not.toBeTruthy();
+			expect(screen.queryByText(mockRecentSearches[0])).not.toBeTruthy();
+		});
+		it("should render correctly if 'rencent searches' is filled", () => {
+			renderSearchBarWithMockedHooks({
+				...mockUseRecentSearchesDefaultReturnValue,
+				recentSearches: mockRecentSearches,
+			});
+
+			expect(getInputElement()).toBeTruthy();
+			expect(screen.getByText(mockRecentSearches[0])).toBeTruthy();
 		});
 	});
 
 	describe("Interactions", () => {
 		describe("Search", () => {
-			function executeMockImplementation() {
-				mockUseRecentSearches.mockImplementation(() => ({
-					...useRecentSearchesDefaultReturnValue,
-					saveWordSearched: mockSaveWordSearched,
-				}));
-			}
-
 			it("should not search if the value is empty", () => {
-				executeMockImplementation();
-
+				renderSearchBarWithMockedHooks({
+					...mockUseRecentSearchesDefaultReturnValue,
+					saveWordSearched: mockSaveWordSearched,
+				});
 				const input = getInputElement();
 				onSubmitEditing(input, "");
 
@@ -66,8 +74,10 @@ describe("Search Bar Component", () => {
 			});
 
 			it("should search if the value is filled", () => {
-				executeMockImplementation();
-
+				renderSearchBarWithMockedHooks({
+					...mockUseRecentSearchesDefaultReturnValue,
+					saveWordSearched: mockSaveWordSearched,
+				});
 				const typedValue = "Hello";
 				const input = getInputElement();
 				onSubmitEditing(input, typedValue);
