@@ -1,5 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react-native";
-import { mockedNavigate } from "../../../../jest-setup";
+
+import { mockNavigate } from "../../../../jest-setup";
 import { Synonym } from "./Synonym";
 
 const WORD = "Hello";
@@ -18,7 +19,7 @@ describe("Synonym Component", () => {
 				const link = screen.getByRole("link");
 				fireEvent.press(link);
 
-				expect(mockedNavigate).toHaveBeenCalled();
+				expect(mockNavigate).toHaveBeenCalled();
 			});
 		});
 	});

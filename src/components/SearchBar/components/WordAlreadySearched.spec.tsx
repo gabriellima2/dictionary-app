@@ -1,15 +1,17 @@
 import { fireEvent, render, screen } from "@testing-library/react-native";
-import { mockedNavigate } from "../../../../jest-setup";
+
+import { mockNavigate } from "../../../../jest-setup";
 import { WordAlreadySearched } from "./WordAlreadySearched";
 
+const WORD = "Unit Test";
+
 describe("Word Already Searched Component", () => {
-	const wordMock = "Teste Unitário";
 	const mockHandleRemove = jest.fn();
 
 	beforeAll(() =>
 		render(
 			<WordAlreadySearched
-				word={wordMock}
+				word={WORD}
 				removeFromRecentSearches={mockHandleRemove}
 			/>
 		)
@@ -17,7 +19,7 @@ describe("Word Already Searched Component", () => {
 
 	describe("Render", () => {
 		it("should render correctly", () => {
-			expect(screen.getByText(wordMock)).toBeTruthy();
+			expect(screen.getByText(WORD)).toBeTruthy();
 			expect(screen.getByLabelText("Remove")).toBeTruthy();
 		});
 	});
@@ -29,7 +31,7 @@ describe("Word Already Searched Component", () => {
 					const link = screen.getByRole("link");
 					fireEvent.press(link);
 
-					expect(mockedNavigate).toHaveBeenCalled();
+					expect(mockNavigate).toHaveBeenCalled();
 				});
 			});
 			describe("Remove Button", () => {

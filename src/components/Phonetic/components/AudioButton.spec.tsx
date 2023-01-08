@@ -5,9 +5,7 @@ import { AudioButton } from "./AudioButton";
 
 jest.mock("../../../hooks/usePlaySound");
 
-function getButtonElement() {
-	return screen.getByLabelText("Escutar pronúncia");
-}
+const LABEL_TEXT = "Escutar pronúncia";
 
 describe("Audio Button Component", () => {
 	const mockPlaySound = jest.fn();
@@ -23,14 +21,14 @@ describe("Audio Button Component", () => {
 
 	describe("Render", () => {
 		it("should render correctly", () => {
-			expect(getButtonElement()).toBeTruthy();
+			expect(screen.getByLabelText(LABEL_TEXT)).toBeTruthy();
 		});
 	});
 
 	describe("Interaction", () => {
 		describe("Press", () => {
 			it("should call the function when pressed", () => {
-				const button = getButtonElement();
+				const button = screen.getByLabelText(LABEL_TEXT);
 				fireEvent.press(button);
 
 				expect(mockPlaySound).toHaveBeenCalled();
