@@ -6,14 +6,14 @@ import { BaseButton } from "../../BaseButton";
 import { themes } from "../../../styles/theme";
 
 export interface AudioButtonProps {
-	audioUrl?: string;
+	audioUrl: string;
 }
 
 export const AudioButton = ({ audioUrl }: AudioButtonProps) => {
 	const { playSound } = usePlaySound({ uri: audioUrl });
 
 	return (
-		<BaseButton onPress={playSound}>
+		<BaseButton onPress={playSound} accessibilityLabel="Escutar pronúncia">
 			<SimpleLineIcons name="volume-2" size={20} color={themes.fontColor} />
 		</BaseButton>
 	);
