@@ -8,7 +8,7 @@ import type { Meaning as IMeaning } from "../../../interfaces/Meaning";
 interface MeaningProps extends Pick<IMeaning, "synonyms"> {
 	title: string;
 	definition: string;
-	example: string;
+	example?: string;
 }
 
 export const Meaning = ({
@@ -22,7 +22,7 @@ export const Meaning = ({
 			<Title style={styles.title}>{title}</Title>
 			<Paragraph>{definition}</Paragraph>
 			{example && (
-				<Paragraph style={styles.example}>
+				<Paragraph style={styles.example} accessibilityLabel="Example text">
 					{"'"}
 					{example}
 					{"'"}

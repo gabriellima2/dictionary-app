@@ -20,7 +20,7 @@ export const Synonyms = ({ synonyms }: SynonymsProps) => {
 	const keyExtractor = useCallback((item: string) => item, []);
 
 	return (
-		<View style={styles.synonyms}>
+		<View style={styles.synonyms} accessibilityLabel="Synonyms list">
 			<FlatList
 				data={repeatedSynonymsRemoved}
 				renderItem={renderItem}
