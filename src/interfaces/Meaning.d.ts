@@ -1,6 +1,6 @@
 import type { Synonyms } from "./Synonyms";
 
-interface Definition {
+export interface Definition {
 	definition: string;
 	example?: string;
 }
