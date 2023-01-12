@@ -6,6 +6,7 @@
 
 <div align="center">
   <img src="./public/github/figma-print.jpg" alt="demonstração do projeto" >
+	<p align="center">Template de inspiração <a href="https://dribbble.com/shots/6029129-Minimal-Dictionary-App">Minimal Dictionary App</a></p>
 </div>
 
 # Sobre
