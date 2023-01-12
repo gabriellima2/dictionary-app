@@ -1,5 +1,7 @@
 <h1 align="center">
-    Dictionary-App!
+    <img alt="Logo" src="./public/github/logo.svg" />
+    <br>
+    Dictionary App
 </h1>
 
 <div align="center">
