@@ -1,5 +1,5 @@
 export const themes = {
-	backgroundColor: "#E3DCCB",
-	fontColor: "#574537",
-	utilColor: "#CEC0A3",
+	backgroundColor: "#1A1A1A",
+	fontColor: "#ECECEC",
+	utilColor: "#404040",
 };

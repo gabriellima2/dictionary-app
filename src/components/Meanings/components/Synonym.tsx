@@ -27,7 +27,7 @@ export const Synonym = ({ word }: SynonymProps) => {
 
 const styles = StyleSheet.create({
 	synonym: {
-		borderColor: "#0000005a",
+		borderColor: "#ffffff5a",
 		borderRadius: 12,
 		borderWidth: 1,
 		padding: 6,

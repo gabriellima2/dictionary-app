@@ -21,7 +21,11 @@ export const BaseInput = ({ leftIcon, ...props }: BaseInputProps) => (
 				style={[styles.icon, props.style]}
 			/>
 		)}
-		<TextInput {...props} style={[styles.input, props.style]} />
+		<TextInput
+			{...props}
+			style={[styles.input, props.style]}
+			placeholderTextColor="#ffffff6a"
+		/>
 	</View>
 );
 
