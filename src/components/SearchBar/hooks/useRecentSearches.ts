@@ -9,7 +9,7 @@ interface Return {
 	saveWordSearched: (word: string) => void;
 }
 
-const KEY_ASYNC_STORAGE = "recent-searches";
+export const KEY_ASYNC_STORAGE = "recent-searches";
 
 export function useRecentSearches(): Return {
 	const [recentSearches, setRecentSearches] = useState<RecentSearches>(null);
