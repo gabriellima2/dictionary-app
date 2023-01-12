@@ -1,5 +1,5 @@
 <h1 align="center">
-    Dictionary-App! (Em desenvolvimento)
+    Dictionary-App!
 </h1>
 
 <div align="center">
