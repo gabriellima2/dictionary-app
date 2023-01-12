@@ -1,11 +1,11 @@
 <h1 align="center">
     <img alt="Logo" src="./public/github/logo.svg" />
     <br>
-    Dictionary App
+    Dictionary App! Aplicativo de dicionário
 </h1>
 
 <div align="center">
-  <img src="./public/github/figma.jpg" alt="demonstração do projeto" >
+  <img src="./public/github/figma-print.jpg" alt="demonstração do projeto" >
 </div>
 
 # Sobre
